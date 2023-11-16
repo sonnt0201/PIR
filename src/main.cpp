@@ -2,7 +2,7 @@
 
 const char* ssid = "Sv 2022";
 const char* password = "@sv22022";
-const char *serverIp = "localhost";
+const char *serverIp = "127.0.0.1";
 const int serverPort = 8080;
 
 const int pirPin = 13; // Replace with the actual pin your PIR sensor is connected to
@@ -47,17 +47,14 @@ void sendDataToServer() {
     Serial.println("Connected to server");
 
     // Construct the data payload
-    String postData = "device id:0\nvoltage:5\ntime:" + String(millis());
+    String postReq = "POST / HTTP/1.1\n\nesp-id=0&vol=5&time=123456";
 
     Serial.println("Sending data to server:\n" + postData);
 
     // Send the data to the server
-    client.print("POST / HTTP/1.1\r\n");
-    client.print("Host: " + String(serverIp) + "\r\n");
-    client.print("Content-Type: application/x-www-form-urlencoded\r\n");
-    client.print("Content-Length: " + String(postData.length()) + "\r\n");
-    client.print("\r\n");
-    client.print(postData);
+    client.print(postReq);
+   
+   
 
     // Wait for the response
     while (client.connected()) {
