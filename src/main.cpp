@@ -49,7 +49,7 @@ void sendDataToServer() {
     // Construct the data payload
     String postReq = "POST / HTTP/1.1\n\nesp-id=0&vol=5&time=123456";
 
-    Serial.println("Sending data to server:\n" + postData);
+    Serial.println("Sending data to server:\n");
 
     // Send the data to the server
     client.print(postReq);
