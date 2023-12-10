@@ -1,9 +1,9 @@
 #include <WiFi.h>
 #include <ctime>
 #include "time.h"
-const char *ssid = "Sv 2022";
-const char *password = "@sv22022";
-const char *serverIp = "192.168.1.83";
+const char *ssid = "ntson";
+const char *password = "02012003";
+const char *serverIp = "192.168.20.42";
 const int serverPort = 8080;
 String volStr = "";
 const char *ntpServer = "pool.ntp.org";
@@ -51,7 +51,7 @@ void loop()
 
   volt = analogRead(pirPin);
 
-  volStr += (count < countMax) ? String(volt) + '+' : String(volt);
+  volStr += (count < countMax) ? String(volt) + '_' : String(volt);
 
   delay(delayTime);
 
